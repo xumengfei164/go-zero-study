@@ -1,0 +1,17 @@
+Name: Search
+Host: 0.0.0.0
+Port: 8888
+Mysql:
+  DataSource: root:my-secret-pw@tcp(127.0.0.1:3306)/zero?charset=utf8mb4&parseTime=True&loc=Local
+CacheRedis:
+  - Host: 127.0.0.1:6379
+    Pass: "123456"
+    Type: node
+UserProxy:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+Auth:
+  AccessSecret: "g02er0study"
+  AccessExpire: 1500

@@ -1,14 +1,26 @@
-syntax = "v1"
+type (
+	SearchReq {
+		Id int32 `path:"id"`
+	}
 
-type Request {
-	Name string `path:"name,options=you|me"`
-}
+	SearchReply {
+		Id      int32    `json:"id"`
+		Name    string   `json:"name"`
+		Hobbies []string `json:"hobbies"`
+	}
+	SearchOrderReq {
+		Id int32 `path:"id"`
+	}
 
-type Response {
-	Message string `json:"message"`
-}
-
-service search-api {
-	@handler SearchHandler
-	get /from/:name(Request) returns (Response)
+	SearchOrderReply {
+		Id      int32    `json:"id"`
+		Name    string   `json:"name"`
+		Hobbies []string `json:"hobbies"`
+	}
+)
+service Search {
+	@handler searchInfo
+	get /api/Search/get/:id (SearchReq) returns (SearchReply)
+	@handler searchOrder
+	get /api/SearchOrder/get/:id (SearchOrderReq) returns (SearchOrderReply)
 }

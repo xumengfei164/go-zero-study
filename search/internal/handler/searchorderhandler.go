@@ -9,16 +9,16 @@ import (
 	"go_zero_study/search/internal/types"
 )
 
-func SearchHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func searchOrderHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.Request
+		var req types.SearchOrderReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := logic.NewSearchLogic(r.Context(), svcCtx)
-		resp, err := l.Search(&req)
+		l := logic.NewSearchOrderLogic(r.Context(), svcCtx)
+		resp, err := l.SearchOrder(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

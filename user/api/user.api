@@ -1,0 +1,28 @@
+type (
+	UserReq {
+		Id int32 `path:"id"`
+	}
+
+	UserReply {
+		Id      int32    `json:"id"`
+		Name    string   `json:"name"`
+		Hobbies []string `json:"hobbies"`
+	}
+	LoginReq {
+		Id       int32  `json:"id"`
+		Password string `json:"password"`
+	}
+	LoginReply {
+		Id        int32  `json:"id"`
+		SecretKey string `json:"secretkey"`
+	}
+)
+service User {
+	@handler getUserInfo
+	get /api/User/get/:id (UserReq) returns (UserReply)
+}
+
+service User {
+	@handler login
+	post /api/user/user_login (LoginReq) returns (LoginReply)
+}

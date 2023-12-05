@@ -4,15 +4,15 @@ import (
 	"flag"
 	"fmt"
 
-	"go_zero_study/search/internal/config"
-	"go_zero_study/search/internal/handler"
-	"go_zero_study/search/internal/svc"
+	"go_zero_study/user/api/internal/config"
+	"go_zero_study/user/api/internal/handler"
+	"go_zero_study/user/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
 )
 
-var configFile = flag.String("f", "etc/search.yaml", "the config file")
+var configFile = flag.String("f", "etc/user.yaml", "the config file")
 
 func main() {
 	flag.Parse()
